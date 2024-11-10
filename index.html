@@ -1,70 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUSTICE AI</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="logo-container">
-                <img src="1-removebg-preview.png" alt="Justice AI Logo" class="logo">
-                <h1>JUSTICE AI</h1>
-            </div>
-            
-            <button class="new-chat-btn">
-                <i class="fas fa-plus"></i> New Chat
-            </button>
 
-            <div class="recent-chats">
-                <h2>Recent Chats</h2>
-                <div class="chat-list" id="chatList">
-                    <!-- Chat history will be populated here -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JUSTICE AI</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="logo-container">
+                    <img src="1-removebg-preview.png" alt="Justice AI Logo" class="logo">
+                    <h1>JUSTICE AI</h1>
+                </div>
+
+                <button id="newChatButton" class="new-chat-btn">
+                    <i class="fas fa-plus"></i> New Chat
+                </button>
+
+                <div class="recent-chats">
+                    <h2>Recent Chats</h2>
+                    <div class="chat-list" id="chatList">
+                        <!-- Chat history will be populated here -->
+                    </div>
+                </div>
+
+                <div class="sidebar-bottom">
+                    <button class="google-btn">
+                        <i class="fab fa-google"></i> Continue with Google
+                    </button>
+                    <button class="settings-btn">
+                        <i class="fas fa-cog"></i> Settings
+                    </button>
+                    <button class="help-btn">
+                        <i class="fas fa-question-circle"></i> Help Center
+                    </button>
+                    <button id="clearHistoryBtn" class="settings-btn">
+                        <i class="fas fa-trash"></i> Clear History
+                    </button>
                 </div>
             </div>
 
-            <div class="sidebar-bottom">
-                <button class="google-btn">
-                    <i class="fab fa-google"></i> Continue with Google
-                </button>
-                <button class="settings-btn">
-                    <i class="fas fa-cog"></i> Settings
-                </button>
-                <button class="help-btn">
-                    <i class="fas fa-question-circle"></i> Help Center
-                </button>
-            </div>
-        </div>
+            <!-- Main Chat Area -->
+            <div class="chat-area">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will appear here -->
+                </div>
 
-        <!-- Main Chat Area -->
-        <div class="chat-area">
-            <div class="chat-messages" id="chatMessages">
-                <!-- Messages will appear here -->
-            </div>
-            
-            <div class="input-area">
-                <textarea id="userInput" placeholder="Type your legal question here..."></textarea>
-                <div class="input-buttons">
-                    <button class="mic-btn" id="micButton">
+                <div class="input-area">
+                    <button class="mic-btn" id="micButton" data-tooltip="Voice input">
                         <i class="fas fa-microphone"></i>
                     </button>
-                    <button class="send-btn" id="sendButton">
+                    <div class="textarea-container">
+                        <textarea id="userInput" placeholder="Type your message here..." rows="1"></textarea>
+                    </div>
+                    <button class="send-btn" id="sendButton" data-tooltip="Send message">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
             </div>
         </div>
-    </div>
-    <button class="hamburger-menu" id="hamburgerMenu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </button>
-    <div class="overlay" id="overlay"></div>
-    <script src="script.js"></script>
-</body>
-</html> 
+        <button class="hamburger-menu" id="hamburgerMenu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
+        <div class="overlay" id="overlay"></div>
+        <script src="script.js"></script>
+    </body>
+
+</html>

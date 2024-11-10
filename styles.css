@@ -8,11 +8,13 @@
 .container {
 	display: flex;
 	height: 100vh;
+	overflow: hidden;
 }
 
 /* Sidebar Styles */
 .sidebar {
 	width: 300px;
+	min-width: 300px;
 	background-color: #002341;
 	padding: 20px;
 	display: flex;
@@ -130,13 +132,16 @@
 	flex-direction: column;
 	background-color: #f8faff;
 	position: relative;
+	height: 100vh;
+	overflow: hidden;
 }
 
 .chat-messages {
 	flex-grow: 1;
-	padding: 30px;
+	max-width: 100%;
 	overflow-y: auto;
 	background: linear-gradient(to bottom, #f0f4ff, #f8faff);
+	padding: 20px 8px;
 }
 
 /* Message Bubbles */
@@ -146,10 +151,23 @@
 	animation: fadeIn 0.3s ease-in;
 	position: relative;
 	max-width: 50%;
+	min-width: 400px;
 }
 
 .user-message {
 	margin-left: auto;
+	align-self: flex-end;
+	width: fit-content;
+	flex-direction: row-reverse;
+}
+
+.ai-message {
+	flex-direction: row;
+}
+.ai-message > .avatar {
+	flex-shrink: 0;
+	min-width: 32px;
+	min-height: 32px;
 }
 
 .message-content {
@@ -200,8 +218,6 @@
 	width: 38px;
 	height: 38px;
 	border-radius: 50%;
-	position: absolute;
-	bottom: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -209,7 +225,6 @@
 }
 
 .ai-message .avatar {
-	left: -45px;
 	background: white;
 	padding: 3px;
 }
@@ -229,7 +244,7 @@
 
 /* Chat Container with Max Width */
 .chat-container {
-	max-width: 900px;
+	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 20px;
 	width: 100%;
@@ -273,20 +288,120 @@
 }
 
 /* Input Area Styling */
-.input-area-container {
-	max-width: 900px;
-	margin: 0 auto;
-	width: 100%;
-	padding: 20px;
-}
-
 .input-area {
 	background: white;
-	padding: 20px 30px;
+	padding: 15px 20px;
 	border-radius: 15px;
 	box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
 	border: 1px solid rgba(0, 35, 65, 0.1);
 	margin-bottom: 20px;
+	display: flex;
+	gap: 12px;
+	align-items: flex-start;
+}
+
+/* Mic Button specific styling */
+.mic-btn {
+	order: 1;
+}
+
+/* Textarea Container */
+.textarea-container {
+	order: 2;
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	align-items: flex-start;
+}
+
+/* Send Button specific styling */
+.send-btn {
+	order: 3;
+	background: #002341;
+	color: white;
+	transition: all 0.3s ease;
+}
+
+.send-btn:disabled {
+	background: #e0e0e0;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.send-btn:disabled i {
+	color: #999;
+}
+
+/* Optional: Remove hover effects when disabled */
+.send-btn:disabled:hover {
+	background: #e0e0e0;
+	transform: none;
+}
+
+.send-btn:disabled:hover i {
+	transform: none;
+}
+
+textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	resize: none;
+	font-size: 0.95rem;
+	line-height: 1.4;
+	min-height: 44px;
+	max-height: 150px;
+	outline: none;
+	transition: border-color 0.3s;
+	margin-top: 0;
+}
+
+textarea:focus {
+	border-color: #007bff;
+}
+
+/* Button Styling */
+.mic-btn,
+.send-btn {
+	width: 44px;
+	height: 44px;
+	border-radius: 10px;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	flex-shrink: 0;
+	transition: all 0.3s ease;
+	margin-top: 0;
+}
+
+.mic-btn {
+	background: #f0f4ff;
+	color: #002341;
+}
+
+.send-btn {
+	background: #002341;
+	color: white;
+}
+
+/* Ensure buttons maintain size on mobile */
+@media screen and (max-width: 768px) {
+	.input-area {
+		padding: 12px 15px;
+	}
+
+	.mic-btn,
+	.send-btn {
+		width: 40px;
+		height: 40px;
+	}
+
+	textarea {
+		min-height: 40px;
+	}
 }
 
 /* Typing Indicator */
@@ -522,4 +637,28 @@
 	.overlay.active {
 		display: block;
 	}
+}
+
+.chat-item.active {
+	background-color: #003666;
+	border-left: 3px solid #007bff;
+	color: white;
+}
+
+.chat-item.active small {
+	color: #a8b9cc;
+}
+
+.settings-btn.clear-history {
+	background-color: #dc3545;
+	margin-top: 10px;
+}
+
+.settings-btn.clear-history:hover {
+	background-color: #c82333;
+}
+
+body {
+	overflow: hidden;
+	height: 100vh;
 }
