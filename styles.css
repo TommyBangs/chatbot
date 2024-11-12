@@ -616,7 +616,7 @@ textarea:focus {
 		height: 100vh;
 		z-index: 999;
 		transition: 0.3s ease-in-out;
-		background-color: #f5f5f5;
+		background-color: #002341;
 	}
 
 	.sidebar.active {
